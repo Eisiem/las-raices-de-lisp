@@ -1,2 +1,2 @@
 # las-raices-de-lisp
-Translate of a original article "a roots of lisp" of Paul Graham
+Spanish translation of the original article [*"The Roots of Lisp"*](http://www.paulgraham.com/rootsoflisp.html) from Paul Graham.

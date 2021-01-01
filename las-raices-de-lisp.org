@@ -1,22 +1,18 @@
 #+TITLE: Las raíces de Lisp
-#+AUTHOR: Patricio Martínez
-#+EMAIL: maxxcan@disroot.org
-#+DATE: <2020-12-20 dom>
+#+AUTHOR: Paul Graham
+#+DATE: <2002-1-18>
 #+STARTUP: latexpreview
 
+# La primara página ha de incluir los nombres de los traductores, revisores, emails de contacto, fecha de publicación de la traducción, etc. Pero no como título principal, pues el autor original sigue siendo Paul Graham.
 
-* Introducción 
+En 1960, /John McCarthy/ publicó un artículo excepcional con el que hizo para la programación algo parecido a lo que Euclides hizo para la geometría[fn:1]. Mostró como, dado un puñado de operadores simples y una notación para funciones, uno podía construir un lenguaje de programación completo. Bautizó este lenguaje como «Lisp», acrónimo de "List Processing", ya que una de sus principales ideas fue usar una única estructura de datos llamada /---list---/ (/---lista---/ en español) tanto para código como para datos. 
 
-* Las raíces de Lisp -Paul Graham- 18 de Enero del 2002
+Hay que considerar aquello que /McCarthy/ descubrió, no solo como un punto y a parte en la historia de la computación, sino como un modelo para lo que la programación está tendiendo a convertirse en nuestros tiempos. A mi parecer hasta ahora han exsistido dos modelos de programación realmente claros y concisos: El modelo «C» y el modelo Lisp. Los cuales son como dos colinas con un pantano entre ellas.
+Un método muy utilizado a la hora de crear nuevos lenguajes de programación durante los últimos 20 años ha sido coger el modelo C y añadirle partes del modelo Lisp, como ?? en tiempo de ejecución y recolección de basura.
 
-En 1960, /John McCarthy/ publicó un paper increíble en el cual el hizo para la programación algo como lo que hizo Euclídeo para la geometría[fn:1]. El mostró como, dado un puñado de operadores simples y una notación para funciones, se podía construir un lenguaje de programación completo. El llamó a este lenguaje Lisp, por "List Processing" porque una de sus ideas principales era usar una única estructura de datos llamada una /lista/ tanto para código como para datos. 
-
-El valor de entender lo que /McCarthy/ descubrió, no solo como un punto de referencia en la historia de la computación, sino como un modelo para lo que la programación está tendiendo a convertirse en nuestro tiempo. Me parece a mí que han habido dos realmente claros, modelos consistentes de programación hasta  ahora: El modelo C y el modelo Lisp. Esos dos parecen puntos de suelo elevado, con tierras pantanosas entre ellos. Al tiempo que los ordenadores han crecido en potencia, los nuevos lenguajes que han sido desarrollados se han movido continuamente hacia el modelo Lisp. Una popular receta para los nuevos lenguajes de programación que hace 20 años habían usado el modelo C de computación y añadido a ellos, poco a poco, partes de modelo Lisp, como los tipos en tiempo de ejecución y el colector de basura. 
-
-En este artículo vamos a intentar explicar de la forma más simple posible los términos que /McCarthy/ descubrió. El punto no es solo aprender sobre un resultado teórico interesante que alguien estudió hace cuarenta años, sino mostrar donde los lenguajes empezaron. El asunto inusual sobre Lisp en realidad, la calidad que define Lisp es que puede escribirse así mismo. Para entender lo que /McCarthy/ quiso decir con esto, vamos a ir volviendo a reconstruir sus pasos, con su notación matemática traducida a código Common Lisp ejecutable.   
+En este artículo intentaré explicar de manera más simple posible aquello que McCarthy descubrió. El objetivo no es tan solo aprender acerca de un interesante resultado teórico que alguién descubrió hace 40 años, sino mostrar hacia donde están yendo los lenguajes de programación. Un a característica poco común de Lisp (De hecho la característica que lo define) es que Lisp puede ser escrito consigo mismo. Para entender lo que McCarty quiere decir con esto vamos a seguir sus pasos desde esta notación matemática hasta código escrito en Common Lisp.
 
 * Siete operadores primitivos
-
 Empezaremos con lo que, hemos definido como una /expresión/. Una expresión es un /átomo/, el cual es una secuencia de letras (ej. foo), o una lista de cero o más expresiones, separadas por un espacio en blanco y encerrada por paréntesis. Aquí hay algunas expresiones: 
 
 #+BEGIN_SRC lisp
